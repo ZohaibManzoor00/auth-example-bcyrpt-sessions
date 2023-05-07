@@ -32,6 +32,4 @@ userRouter.patch("/users/:id", checkAuthentication, userController.update);
 // Delete
 userRouter.delete("/users/logout", userController.logout);
 
-userRouter.get("/posts", userController.listPosts);
-
 module.exports = userRouter;
