@@ -25,6 +25,17 @@ class User {
     }
   }
 
+  static async listPosts() {
+    try {
+      const SQL = 'SELECT posts.*, username FROM posts JOIN users ON posts.user_id = users.id'
+      const res = await knex.raw(SQL)
+      return res.rows
+    } catch (err) {
+      console.error(err)
+      return null
+    }
+  }
+
   static async find(id) {
     try {
       const query = 'SELECT * FROM users WHERE id = ?';

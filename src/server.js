@@ -3,7 +3,7 @@ const path = require('path');
 // const handleSessions = require('./middleware/handle-sessions');
 const handleCookieSessions = require('./middleware/handle-cookie-sessions');
 const logRoutes = require('./middleware/log-routes');
-const routes = require('./routes');
+const userRoutes = require('./userRoutes');
 
 const app = express();
 
@@ -12,6 +12,6 @@ app.use(logRoutes);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-app.use('/api', routes);
+app.use('/api', userRoutes);
 
 module.exports = app;

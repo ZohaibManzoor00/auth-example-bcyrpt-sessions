@@ -24,6 +24,7 @@ const signupAndLoginHandler = async (url, form) => {
   const formData = new FormData(form);
   const options = getFetchOptions(Object.fromEntries(formData.entries()));
   const [_response, err] = await handleFetch(url, options);
+
   if (err) {
     form.reset();
     return alert('Something went wrong');
@@ -74,6 +75,8 @@ const setNav = (hasLoggedInUser) => {
   document.querySelector('nav').innerHTML = navHtml;
 };
 
+const getEl = (classOrId) => document.querySelector(classOrId)
+
 // This is wonky. Once you learn about bundlers we won't have to
 // explicitly create globals. We just lack the tools right now.
 Object.assign(window, {
@@ -84,6 +87,7 @@ Object.assign(window, {
   setNav,
   logOutHandler,
   updateUsernameHandler,
+  getEl
 });
 
 export {
@@ -94,4 +98,5 @@ export {
   setNav,
   logOutHandler,
   updateUsernameHandler,
+  getEl
 };
